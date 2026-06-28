@@ -132,15 +132,19 @@ public class AntQ {
                 antPaths[a] = buildAntRoute(visited, antDist, antPrize, a);
             }
 
-            // -- Find the best ant this episode --
+            // -- Find the shortest-route ant this episode (prize-oblivious, per Ant-Q design) --
+            int shortestAnt = 0;
+            for (int a = 1; a < NUM_ANTS; a++)
+                if (antDist[a] < antDist[shortestAnt]) shortestAnt = a;
+
+            // -- Global pheromone update on shortest-route edges only --
+            globalPheromoneUpdate(antPaths[shortestAnt], antDist[shortestAnt]);
+
+            // -- Track overall best route by prize (for final output) --
             int bestAnt = 0;
             for (int a = 1; a < NUM_ANTS; a++)
                 if (antPrize[a] > antPrize[bestAnt]) bestAnt = a;
 
-            // -- Global pheromone update --
-            globalPheromoneUpdate(antPaths[bestAnt], antDist[bestAnt]);
-
-            // -- Track overall best route --
             if (antPrize[bestAnt] > bestRoutePrize) {
                 bestRoutePrize = antPrize[bestAnt];
                 bestRoute      = new ArrayList<>(antPaths[bestAnt]);
