@@ -1,0 +1,25 @@
+# Core dependencies for the OP (Orienteering Problem) pipeline:
+#   txt_to_op.py -> eval.py / run.py -> decode_route.py
+# Install with:  pip install -r requirements.txt
+#
+# The repo targets Python >= 3.8. Version floors below match the original
+# project (PyTorch >= 1.7); newer releases generally work fine.
+
+torch>=1.7
+numpy
+scipy
+tqdm
+tensorboard_logger
+
+# --- Optional: only needed to run the classical OP baselines ---------------
+# (problems/op/op_gurobi.py and problems/op/op_ortools.py). The neural
+# pipeline above does NOT require these. Uncomment if you run those solvers.
+#
+# ortools          # Google OR-Tools baseline (op_ortools.py)
+# six              # imported by op_ortools.py
+# gurobipy         # Gurobi exact solver (op_gurobi.py) -- also needs a license
+#
+# Note: the Compass and genetic-algorithm (opga/) baselines are pure-Python /
+# compiled-from-source and need no pip packages.
+#
+# matplotlib       # only for the optional plotting notebooks

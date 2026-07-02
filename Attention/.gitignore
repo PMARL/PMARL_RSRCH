@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+training_runs/
+build/
+*.class
+data/attention/
+raw/attention_eval_results.pkl
+summary/experiment_manifest.json
+summary/professor_summary.md
+summary/comparison_results.xlsx
+figures/*.svg

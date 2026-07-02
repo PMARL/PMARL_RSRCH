@@ -1,0 +1,14 @@
+Fig. 14 plot generation notes
+-----------------------------------------------------------------
+The generated plot PDFs compare only Attention and P-MARL.
+Output PDFs:
+- figures/prize_collected_vs_budget_pmarl_attention.pdf
+- figures/training_time_vs_budget_pmarl_attention.pdf
+No original wall-clock training log is stored with the pretrained op_dist_50 checkpoint.
+The checkpoint metadata shows 100 training epochs. The execution-time PDF adds a documented proxy
+for Attention pretraining time: 100 epochs * 16 minutes 20 seconds per epoch = 98,000,000 ms.
+The 16:20 per-epoch value is the published 50-node Attention Model single-GPU epoch time reported
+for the Attention, Learn to Solve Routing Problems model family. The route-evaluation inference
+time from our local run is still included on top of this pretraining proxy.
+Training-time plots display these runtime values in seconds.
+Error bars use 95% confidence intervals: mean +/- t * std / sqrt(n).

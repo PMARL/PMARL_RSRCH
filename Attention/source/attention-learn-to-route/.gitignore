@@ -1,0 +1,33 @@
+data/
+outputs/
+logs/
+results/
+__pycache__/
+.idea
+*/.ipynb_checkpoints
+*.tc.*
+*.tc_backward.*
+*.log
+*.bak
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python compiled / cache
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# OS / editor cruft (iCloud + macOS spawn these)
+.DS_Store
+.vscode/
+
+# Generated OP run artifacts (keep source .py and Capital_Cities.txt)
+results.pkl
+*.results.pkl
+*.names.json
+
+# Personal / non-code files not meant for the repo
+email_to_professor.txt
