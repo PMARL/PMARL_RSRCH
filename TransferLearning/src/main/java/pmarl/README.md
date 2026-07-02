@@ -4,6 +4,13 @@ Implementation of the algorithms from the paper:
 **"Budget-Constrained Traveling Salesman Problem: a Cooperative Multi-Agent Reinforcement Learning Approach"**
 https://csc.csudh.edu/btang/secon_2024_journal.pdf
 
+> **This file documents the legacy 48-city pipeline** (`TableData.java`, `Exploration.java`,
+> `Graph.java`, `Agent.java`, `CityNode.java`, the old `AntQ.java` class, and the gnuplot
+> figure scripts). The actively maintained code — `Main.java` (13,509-city benchmark, with
+> Ant-Q now implemented inline) and `RSNDynamicSimulation.java` (dynamic RSN transfer-learning
+> simulation) — is documented in [`../../../../README.md`](../../../../README.md) at the
+> `TransferLearning/` project root. Start there.
+
 ---
 
 ## State of the Code
@@ -121,7 +128,14 @@ The existing `.dat` files and `.eps` plots from the original paper are kept in t
 
 ## Note on Ant-Q
 
-The paper compares P-MARL against Ant-Q, but **only P-MARL is implemented here**. Ant-Q is prize-oblivious — it was originally designed to minimize travel distance across all nodes, not maximize prizes. The behavioral difference from P-MARL comes down to three small changes:
+**Update:** Ant-Q is now implemented — but as a standalone `runAntQ()` in the current
+`Main.java` (13,509-city benchmark) at the project root, not in this legacy 48-city pipeline.
+The section below describes the three changes needed to derive Ant-Q from this pipeline's
+old P-MARL code (`Agent.java` / `TableData.java`); it was written while Ant-Q was still
+unimplemented anywhere in the repo and is kept for historical reference on *why* Ant-Q behaves
+the way it does relative to P-MARL. Ant-Q is prize-oblivious — it was originally designed to
+minimize travel distance across all nodes, not maximize prizes. The behavioral difference from
+P-MARL comes down to three small changes:
 
 **1. Remove prize from action selection** (`getNextStateFromCurState`):
 ```java

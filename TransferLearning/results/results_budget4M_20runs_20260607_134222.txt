@@ -1,7 +1,0 @@
-
-########## Run 1 of 20 ##########
---- Random Run Parameters ---
-Selected Start City ID: 5799
-Selected End City ID:   8330
-Budget: 4000000
------------------------------
